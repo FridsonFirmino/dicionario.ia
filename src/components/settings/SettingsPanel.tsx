@@ -1,3 +1,4 @@
+import { Settings, X } from 'lucide-react';
 import { useState } from 'react';
 
 const languages = ['Português (BR)', 'English', 'Español'];
@@ -15,10 +16,7 @@ export function SettingsPanel() {
         aria-label="Configurações"
         className="fixed bottom-5 right-5 z-40 p-2.5 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-lg hover:shadow-xl text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300 transition-all duration-200"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
-          <path d="M10 12.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" />
-          <path fillRule="evenodd" d="M10 1.5a.75.75 0 01.75.75v1.28a.75.75 0 01-.531.72 7.5 7.5 0 00-1.438.416.75.75 0 01-.916-.33L8.04 3.23a.75.75 0 011.018-.962A8.97 8.97 0 0110 1.5zM3.343 4.657a.75.75 0 010 1.06l-.707.707a.75.75 0 01-1.06-1.06l.707-.707a.75.75 0 011.06 0zm12.314 0a.75.75 0 011.06 0l.707.707a.75.75 0 01-1.06 1.06l-.707-.707a.75.75 0 010-1.06zM10 5.5a4.5 4.5 0 100 9 4.5 4.5 0 000-9zM3.479 12.48a.75.75 0 010 1.06l-.707.707a.75.75 0 01-1.06-1.06l.707-.707a.75.75 0 011.06 0zm13.042 0a.75.75 0 011.06 0l.707.707a.75.75 0 01-1.06 1.06l-.707-.707a.75.75 0 010-1.06zM10 17.25a.75.75 0 01.75.75v1.25a.75.75 0 01-1.5 0V18a.75.75 0 01.75-.75z" clipRule="evenodd" />
-        </svg>
+        <Settings size={20} />
       </button>
 
       {open && (
@@ -34,9 +32,7 @@ export function SettingsPanel() {
                 onClick={() => setOpen(false)}
                 className="text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-                  <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
-                </svg>
+                <X size={16} />
               </button>
             </div>
 

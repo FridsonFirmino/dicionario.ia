@@ -19,8 +19,8 @@ export function LandingHero({
         <Logo size="lg" />
 
         <p className="text-base md:text-lg text-zinc-500 dark:text-zinc-400 text-center leading-relaxed">
-          O teu dicionário de conhecimento, pronto para te ajudar a entender
-          qualquer coisa em segundos.
+          O que gostarias de saber hoje? O Dicionário IA é a tua fonte de
+          conhecimento para tudo relacionado com inteligência artificial.
         </p>
 
         <div className="w-full">
