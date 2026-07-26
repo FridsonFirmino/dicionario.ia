@@ -4,6 +4,7 @@ import { ErrorState } from "./components/results/ErrorState";
 import { InstantAnswer } from "./components/results/InstantAnswer";
 import { NoResults } from "./components/results/NoResults";
 import { SearchBar } from "./components/search/SearchBar";
+import { SettingsPanel } from "./components/settings/SettingsPanel";
 import { LoadingSkeleton } from "./components/ui/Skeleton";
 import { useSearch } from "./hooks/useSearch";
 import { useTheme } from "./hooks/useTheme";
@@ -61,6 +62,8 @@ function App() {
           </div>
         )}
       </main>
+
+      <SettingsPanel />
     </div>
   );
 }
