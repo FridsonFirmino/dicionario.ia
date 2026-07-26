@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://dicionario.ia/sitemap.xml
