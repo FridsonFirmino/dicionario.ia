@@ -7,20 +7,28 @@ import { SearchBar } from "./components/search/SearchBar";
 import { SettingsPanel } from "./components/settings/SettingsPanel";
 import { LoadingSkeleton } from "./components/ui/Skeleton";
 import { useSearch } from "./hooks/useSearch";
+import { useSettings } from "./hooks/useSettings";
 import { useTheme } from "./hooks/useTheme";
 
 function App() {
   const { theme, toggle: toggleTheme } = useTheme();
+  const {
+    language,
+    setLanguage,
+    area,
+    setArea,
+  } = useSettings();
   const {
     query,
     setQuery,
     status,
     result,
     searchedTerm,
+    source,
     search,
     reset,
     retry,
-  } = useSearch();
+  } = useSearch(area, language);
 
   return (
     <div className="min-h-screen bg-white dark:bg-[#0a0a0b] text-zinc-800 dark:text-zinc-200 transition-colors duration-200">
@@ -53,7 +61,7 @@ function App() {
             {status === "searching" && <LoadingSkeleton />}
 
             {status === "results" && result && (
-              <InstantAnswer data={result} onSearch={search} />
+              <InstantAnswer data={result} onSearch={search} source={source} />
             )}
 
             {status === "no-results" && <NoResults term={searchedTerm} />}
@@ -63,7 +71,12 @@ function App() {
         )}
       </main>
 
-      <SettingsPanel />
+      <SettingsPanel
+        language={language}
+        area={area}
+        onLanguageChange={setLanguage}
+        onAreaChange={setArea}
+      />
     </div>
   );
 }

@@ -1,15 +1,16 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useState } from "react";
 import { mockData } from "../data/mockData";
+import { fetchTermData, isGeminiConfigured } from "../services/gemini";
 import type { SearchStatus, TermData } from "../types";
 
-export function useSearch() {
+export function useSearch(area: string, language: string) {
   const [query, setQuery] = useState("");
   const [status, setStatus] = useState<SearchStatus>("idle");
   const [result, setResult] = useState<TermData | null>(null);
   const [searchedTerm, setSearchedTerm] = useState("");
-  const timerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  const [source, setSource] = useState<"mock" | "gemini">("mock");
 
-  const search = useCallback((q: string) => {
+  const search = useCallback(async (q: string) => {
     const trimmed = q.trim();
     if (!trimmed) return;
 
@@ -17,26 +18,45 @@ export function useSearch() {
     setSearchedTerm(trimmed);
     setStatus("searching");
 
-    if (timerRef.current) clearTimeout(timerRef.current);
+    const mock = mockData[trimmed.toLowerCase()];
 
-    timerRef.current = setTimeout(() => {
-      const data = mockData[trimmed.toLowerCase()];
+    if (mock) {
+      setResult(mock);
+      setSource("mock");
+      setStatus("results");
+      return;
+    }
+
+    if (!isGeminiConfigured()) {
+      setResult(null);
+      setStatus("no-results");
+      return;
+    }
+
+    try {
+      const data = await fetchTermData(trimmed, {
+        area,
+        language,
+      });
       if (data) {
         setResult(data);
+        setSource("gemini");
         setStatus("results");
       } else {
         setResult(null);
         setStatus("no-results");
       }
-    }, 800);
-  }, []);
+    } catch (error) {
+      console.error(error);
+      setStatus("error");
+    }
+  }, [area, language]);
 
   const reset = useCallback(() => {
     setQuery("");
     setStatus("idle");
     setResult(null);
     setSearchedTerm("");
-    if (timerRef.current) clearTimeout(timerRef.current);
   }, []);
 
   const retry = useCallback(() => {
@@ -49,6 +69,7 @@ export function useSearch() {
     status,
     result,
     searchedTerm,
+    source,
     search,
     reset,
     retry,
