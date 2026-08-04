@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import { mockData } from "../data/mockData";
-import { fetchTermData, isGeminiConfigured } from "../services/gemini";
+import { fetchTermData, isGroqConfigured } from "../services/groq";
 import type { SearchStatus, TermData } from "../types";
 
 export function useSearch(area: string, language: string) {
@@ -8,7 +8,7 @@ export function useSearch(area: string, language: string) {
   const [status, setStatus] = useState<SearchStatus>("idle");
   const [result, setResult] = useState<TermData | null>(null);
   const [searchedTerm, setSearchedTerm] = useState("");
-  const [source, setSource] = useState<"mock" | "gemini">("mock");
+  const [source, setSource] = useState<"mock" | "groq">("mock");
 
   const search = useCallback(async (q: string) => {
     const trimmed = q.trim();
@@ -27,7 +27,7 @@ export function useSearch(area: string, language: string) {
       return;
     }
 
-    if (!isGeminiConfigured()) {
+    if (!isGroqConfigured()) {
       setResult(null);
       setStatus("no-results");
       return;
@@ -40,7 +40,7 @@ export function useSearch(area: string, language: string) {
       });
       if (data) {
         setResult(data);
-        setSource("gemini");
+        setSource("groq");
         setStatus("results");
       } else {
         setResult(null);

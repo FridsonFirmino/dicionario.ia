@@ -129,7 +129,7 @@ export async function fetchTermData(
   }
 
   const response = await api.models.generateContent({
-    model: "gemini-2.0-flash",
+    model: "gemini-3.6-flash",
     contents: `${buildSystemPrompt(
       context.area,
       context.language,
