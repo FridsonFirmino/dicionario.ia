@@ -1,11 +1,9 @@
-import { Settings, X } from 'lucide-react';
-import { useState } from 'react';
-import {
-  knowledgeAreas,
-  type KnowledgeArea,
-} from '../../hooks/useSettings';
+import { Settings, X } from "lucide-react";
+import { useState } from "react";
+import { knowledgeAreas, type KnowledgeArea } from "../../hooks/useSettings";
 
-const languages = ['Português (BR)', 'English', 'Español'];
+const languages = ["Português (PT)"];
+// const languages = ["Português (BR)", "English", "Español"];
 
 interface SettingsPanelProps {
   language: string;
@@ -73,7 +71,9 @@ export function SettingsPanel({
                 </label>
                 <select
                   value={area}
-                  onChange={(e) => onAreaChange(e.target.value as KnowledgeArea)}
+                  onChange={(e) =>
+                    onAreaChange(e.target.value as KnowledgeArea)
+                  }
                   className="w-full px-3 py-2 text-sm rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 outline-none focus:ring-2 focus:ring-zinc-300 dark:focus:ring-zinc-600 transition-colors"
                 >
                   {knowledgeAreas.map((a) => (

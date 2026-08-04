@@ -1,5 +1,6 @@
 import { Menu, X } from 'lucide-react';
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Logo } from "../ui/Logo";
 import { ThemeToggle } from "../ui/ThemeToggle";
 
@@ -10,8 +11,8 @@ interface NavbarProps {
 }
 
 const links = [
-  { label: "Sobre", href: "#" },
-  { label: "Extensão", href: "#" },
+  { label: "Sobre", to: "/sobre" },
+  { label: "Extensão", to: "#" },
 ];
 
 export function Navbar({ theme, onToggleTheme, onLogoClick }: NavbarProps) {
@@ -24,13 +25,13 @@ export function Navbar({ theme, onToggleTheme, onLogoClick }: NavbarProps) {
 
         <nav className="hidden sm:flex items-center gap-1">
           {links.map((link) => (
-            <a
+            <Link
               key={link.label}
-              href={link.href}
+              to={link.to}
               className="px-3 py-1.5 text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200 transition-colors rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800/50"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
           <div className="ml-1">
             <ThemeToggle theme={theme} onToggle={onToggleTheme} />
@@ -50,13 +51,13 @@ export function Navbar({ theme, onToggleTheme, onLogoClick }: NavbarProps) {
         <div className="sm:hidden border-t border-zinc-200/50 dark:border-zinc-800/50 bg-white dark:bg-[#0a0a0b] px-4 py-3">
           <div className="flex flex-col gap-1">
             {links.map((link) => (
-              <a
+              <Link
                 key={link.label}
-                href={link.href}
+                to={link.to}
                 className="px-3 py-2 text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200 transition-colors rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800/50"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
             <div className="flex items-center gap-2 px-3 py-2">
               <span className="text-sm text-zinc-400">Tema</span>
