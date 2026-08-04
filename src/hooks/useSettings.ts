@@ -3,9 +3,9 @@ import { useState } from "react";
 export const knowledgeAreas = [
   // "Geral",
   "Tecnologia",
-  // "Ciências",
+  "Ciências",
   // "Humanas",
-  // "Economia",
+  "Economia",
 ] as const;
 
 export type KnowledgeArea = (typeof knowledgeAreas)[number];

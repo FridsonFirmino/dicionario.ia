@@ -1,5 +1,4 @@
 import { useCallback, useState } from "react";
-import { mockData } from "../data/mockData";
 import { fetchTermData, isGroqConfigured } from "../services/groq";
 import type { SearchStatus, TermData } from "../types";
 
@@ -10,47 +9,41 @@ export function useSearch(area: string, language: string) {
   const [searchedTerm, setSearchedTerm] = useState("");
   const [source, setSource] = useState<"mock" | "groq">("mock");
 
-  const search = useCallback(async (q: string) => {
-    const trimmed = q.trim();
-    if (!trimmed) return;
+  const search = useCallback(
+    async (q: string) => {
+      const term = q.trim();
+      if (!term) return;
 
-    setQuery(trimmed);
-    setSearchedTerm(trimmed);
-    setStatus("searching");
+      setQuery(term);
+      setSearchedTerm(term);
+      setStatus("searching");
 
-    const mock = mockData[trimmed.toLowerCase()];
-
-    if (mock) {
-      setResult(mock);
-      setSource("mock");
-      setStatus("results");
-      return;
-    }
-
-    if (!isGroqConfigured()) {
-      setResult(null);
-      setStatus("no-results");
-      return;
-    }
-
-    try {
-      const data = await fetchTermData(trimmed, {
-        area,
-        language,
-      });
-      if (data) {
-        setResult(data);
-        setSource("groq");
-        setStatus("results");
-      } else {
+      if (!isGroqConfigured()) {
         setResult(null);
         setStatus("no-results");
+        return;
       }
-    } catch (error) {
-      console.error(error);
-      setStatus("error");
-    }
-  }, [area, language]);
+
+      try {
+        const data = await fetchTermData(term, {
+          area,
+          language,
+        });
+        if (data) {
+          setResult(data);
+          setSource("groq");
+          setStatus("results");
+        } else {
+          setResult(null);
+          setStatus("no-results");
+        }
+      } catch (error) {
+        console.error(error);
+        setStatus("error");
+      }
+    },
+    [area, language],
+  );
 
   const reset = useCallback(() => {
     setQuery("");
