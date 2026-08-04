@@ -11,17 +11,32 @@ interface InstantAnswerProps {
   data: TermData;
   onSearch: (term: string) => void;
   source?: "mock" | "groq";
+  contextArea: string;
 }
 
-export function InstantAnswer({ data, onSearch, source }: InstantAnswerProps) {
+export function InstantAnswer({
+  data,
+  onSearch,
+  source,
+  contextArea,
+}: InstantAnswerProps) {
   return (
     <article className="w-full max-w-3xl mx-auto px-4 sm:px-6 pb-16">
-      {source === "groq" && (
-        <div className="mb-3 text-xs font-medium text-zinc-400 dark:text-zinc-500 flex items-center gap-1">
+      <div className="mb-3 text-xs font-medium flex flex-col gap-3 text-zinc-400 dark:text-zinc-500">
+        {source === "groq" && (
+          <span className="flex items-center gap-1">
+            <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500" />
+            Conteúdo gerado por IA
+          </span>
+        )}
+        <div className="flex items-center gap-1">
           <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500" />
-          Gerado por inteligência artificial (Groq)
+          <p>
+            A área de conhecimento usada para gerar este conteúdo foi:{" "}
+            {contextArea}
+          </p>
         </div>
-      )}
+      </div>
       <TermHeader term={data.term} categories={data.categories} />
 
       <QuickAnswer text={data.quickAnswer} />

@@ -177,6 +177,13 @@ export function About() {
             })}
           </div>
         </section>
+
+        <p className="mt-12 pt-6 border-t border-zinc-200/50 dark:border-zinc-800/50 text-center text-sm text-zinc-400 dark:text-zinc-500">
+          Desenvolvido com ❤️ por{" "}
+          <span className="font-medium text-zinc-500 dark:text-zinc-400">
+            Fridson Firmino
+          </span>
+        </p>
       </Container>
     </main>
   );

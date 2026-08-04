@@ -1,14 +1,17 @@
+import { Target } from "lucide-react";
 import { SearchBar } from "../search/SearchBar";
 import { SearchExamples } from "../search/SearchExamples";
 import { Logo } from "../ui/Logo";
 
 interface LandingHeroProps {
+  area: string;
   query: string;
   onQueryChange: (value: string) => void;
   onSearch: (value: string) => void;
 }
 
 export function LandingHero({
+  area,
   query,
   onQueryChange,
   onSearch,
@@ -23,8 +26,6 @@ export function LandingHero({
           <span className="text-zinc-700 dark:text-zinc-300 font-medium">
             pelo contexto certo
           </span>
-          . Verbete completo com conceito, exemplos e termos relacionados na
-          área de conhecimento que você definir.
         </p>
 
         <div className="w-full">
@@ -34,6 +35,11 @@ export function LandingHero({
             onSubmit={onSearch}
             size="large"
           />
+        </div>
+
+        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-medium">
+          <Target size={14} />
+          Área de conhecimento atual: {area}
         </div>
 
         <SearchExamples onSelect={onSearch} />
