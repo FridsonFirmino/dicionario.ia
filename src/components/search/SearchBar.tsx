@@ -55,6 +55,12 @@ export function SearchBar({
 
   return (
     <form onSubmit={handleSubmit} className="relative w-full">
+      <div className="flex items-center justify-center mb-1">
+        <span className="text-center text-[13px] text-zinc-400 dark:text-zinc-500">
+          O Dicionario.IA pode conter imprecisões. Confirme informações
+          importantes em outras fontes.
+        </span>
+      </div>
       <div
         className={`relative flex items-center ${height} w-full rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 shadow-sm transition-all duration-200 focus-within:border-zinc-400 dark:focus-within:border-zinc-600 focus-within:shadow-md focus-within:shadow-zinc-900/5 dark:focus-within:shadow-black/20`}
       >
