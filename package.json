@@ -13,16 +13,16 @@
     "@google/genai": "^2.27.0",
     "@tailwindcss/vite": "^4.3.3",
     "groq-sdk": "^1.6.0",
-    "lucide-react": "^1.51.0",
+    "lucide-react": "^1.55.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "react-router-dom": "^7.18.2",
     "tailwindcss": "^4.3.3",
-    "zod": "^4.6.5"
+    "zod": "^4.6.6"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@types/node": "^26.5.1",
+    "@types/node": "^26.6.5",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
     "@vitejs/plugin-react": "^6.1.0",
@@ -31,7 +31,7 @@
     "eslint-plugin-react-refresh": "^0.5.7",
     "globals": "^17.11.0",
     "typescript": "~6.0.2",
-    "typescript-eslint": "^8.69.0",
+    "typescript-eslint": "^8.71.1",
     "vite": "^8.2.0"
   }
 }
