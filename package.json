@@ -16,7 +16,7 @@
     "lucide-react": "^1.59.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
-    "react-router-dom": "^7.18.2",
+    "react-router-dom": "^7.18.4",
     "tailwindcss": "^4.3.3",
     "zod": "^4.6.7"
   },
@@ -26,12 +26,12 @@
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
     "@vitejs/plugin-react": "^6.1.0",
-    "eslint": "^10.11.0",
+    "eslint": "^10.13.0",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.7",
-    "globals": "^17.11.0",
+    "globals": "^17.13.0",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.71.2",
-    "vite": "^8.2.0"
+    "vite": "^8.3.5"
   }
 }
